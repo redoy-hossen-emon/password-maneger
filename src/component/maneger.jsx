@@ -9,86 +9,67 @@ const Maneger = () => {
     const stored = localStorage.getItem('passwords');
     return stored ? JSON.parse(stored) : [];
   });
-  const [form, setform] = useState({ url: '', username: '', password: '' });
-  const [edit, setedit] = useState([])
 
+  const [form, setform] = useState({ url: '', username: '', password: '' });
+  const [edit, setedit] = useState({});
   const ref = useRef();
 
-  useEffect(() => {
-    let passwordData = localStorage.getItem('passwords');
-    let passwordArry;
-    if (passwordData) {
-      setpasswordArry(JSON.parse(passwordData));
-    }
-
-  }, [])
-
+  // Sync passwordArry with localStorage
   useEffect(() => {
     localStorage.setItem('passwords', JSON.stringify(passwordArry));
   }, [passwordArry]);
 
-
   const savePassword = () => {
     if (edit.id) {
-
-
+      // Editing existing entry
       setpasswordArry(passwordArry.map(obj =>
-        obj.id === edit.id ? { ...obj, url: form.url, userame: form.username, password: form.password } : obj
-      ))
-
-
-
+        obj.id === edit.id
+          ? {
+            ...obj,
+            url: form.url,
+            username: form.username,
+            password: form.password,
+          }
+          : obj
+      ));
     } else {
-
+      // Adding new entry
       setpasswordArry([...passwordArry, { ...form, id: uuidv4() }]);
-      localStorage.setItem('passwords', JSON.stringify([...passwordArry, { ...form, id: uuidv4() }]));
     }
 
     setform({ url: '', username: '', password: '' });
-
-
-  }
+    setedit({});
+  };
 
   const deletePassword = (id) => {
     if (confirm("You want to Delete ?")) {
-      setpasswordArry(passwordArry.filter(item => item.id !== id))
-      localStorage.setItem('passwords', JSON.stringify(passwordArry.filter(item => item.id !== id)))
+      setpasswordArry(passwordArry.filter(item => item.id !== id));
     }
-  }
+  };
 
-
-  const editPassword = async (id) => {
-    await setedit(passwordArry.filter(item => item.id === id)[0])
-
-    setform(passwordArry.filter(item => item.id === id)[0])
-    // console.log(edit);
-
-  }
-
+  const editPassword = (id) => {
+    const item = passwordArry.find(item => item.id === id);
+    setedit(item);
+    setform(item);
+  };
 
   const hanldeChange = (e) => {
     setform({ ...form, [e.target.name]: e.target.value });
-  }
-
+  };
 
   const showPass = () => {
     const passInput = document.querySelector('.password');
-    const passIcon = document.querySelector('.passIcon');
-
     if (passInput.type === "password") {
       passInput.type = "text";
       ref.current.src = "img/eye.png";
-
     } else {
-      ref.current.src = "img/eyecross.png";
       passInput.type = "password";
+      ref.current.src = "img/eyecross.png";
     }
-
-  }
+  };
 
   const copyFunc = (text) => {
-    navigator.clipboard.writeText(text)
-
+    navigator.clipboard.writeText(text);
     toast('Copied to clipboard', {
       position: "top-right",
       autoClose: 5000,
@@ -98,10 +79,9 @@ const Maneger = () => {
       draggable: true,
       progress: undefined,
       theme: "light",
-
     });
+  };
 
-  }
 
 
 
