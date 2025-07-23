@@ -89,7 +89,7 @@ const Maneger = () => {
     <>
       <ToastContainer position="top-right" autoClose={5000} hideProgressBar={false} newestOnTop={false} closeOnClick={false} rtl={false} pauseOnFocusLoss draggable pauseOnHover theme="light"
       />
-      <div className="absolute inset-0 -z-10 h-full w-full bg-white [background:radial-gradient(125%_125%_at_50%_10%,#fff_40%,#63e_100%)]"></div>
+      <div className="fixed inset-0 -z-10 h-full w-full bg-white [background:radial-gradient(125%_125%_at_50%_10%,#fff_40%,#63e_100%)]"></div>
 
       <div className="mx-auto width-3/4">
         <div className='w-2/3 mx-auto border-2 border-gray-300 flex flex-col justify-center items-center p-10 mt-10 bg-white shadow-lg rounded-lg'>
@@ -125,7 +125,7 @@ const Maneger = () => {
         </div>
       </div >
 
-      <div className="table container w-2/3 m-auto mt-20">
+      <div className="table container w-2/3 m-auto mt-20" style={{ minHeight: '46.9vh' }}>
 
         {passwordArry.length == 0 && <div className='font-bold text-2xl text-center'> No data found! </div>}
         {passwordArry.length != 0 &&
