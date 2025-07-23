@@ -20,30 +20,35 @@ const Maneger = () => {
   }, [passwordArry]);
 
   const savePassword = () => {
-    if (edit.id) {
-      // Editing existing entry
-      setpasswordArry(passwordArry.map(obj =>
-        obj.id === edit.id
-          ? {
-            ...obj,
-            url: form.url,
-            username: form.username,
-            password: form.password,
-          }
-          : obj
-      ));
+    if (form.url.length < 3 || form.username.length < 3 || form.password.length < 3) {
+      toast('Please Enter valied Info..')
     } else {
-      // Adding new entry
-      setpasswordArry([...passwordArry, { ...form, id: uuidv4() }]);
-    }
+      if (edit.id) {
+        // Editing existing entry
+        setpasswordArry(passwordArry.map(obj =>
+          obj.id === edit.id
+            ? {
+              ...obj,
+              url: form.url,
+              username: form.username,
+              password: form.password,
+            }
+            : obj
+        ));
+      } else {
+        // Adding new entry
+        setpasswordArry([...passwordArry, { ...form, id: uuidv4() }]);
+      }
 
-    setform({ url: '', username: '', password: '' });
-    setedit({});
-  };
+      setform({ url: '', username: '', password: '' });
+      setedit({});
+    };
+  }
 
   const deletePassword = (id) => {
     if (confirm("You want to Delete ?")) {
       setpasswordArry(passwordArry.filter(item => item.id !== id));
+      toast("Password Deleted")
     }
   };
 
