@@ -1,16 +1,30 @@
-# React + Vite
+# 🔐 Password Manager App
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A secure and responsive Password Manager built using the MERN stack (MongoDB, Express.js, React, Node.js) with Tailwind CSS for UI design.
 
-Currently, two official plugins are available:
+## 🚀 Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- 🔐 Add, edit, and delete password entries
+- 👀 Toggle visibility to show/hide passwords
+- 📁 Store all data securely using MongoDB
+- 📡 Connect frontend and backend using Express API
+- 🎨 Styled with Tailwind CSS for a clean and responsive UI
 
-## Expanding the ESLint configuration
+## 🛠 Tech Stack
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+- **Frontend**: React, Tailwind CSS
+- **Backend**: Node.js, Express.js
+- **Database**: MongoDB (with Mongoose)
+- **Tools**: Axios, dotenv, Vite (or CRA if used)
 
-# password-maneger
-This is a simple  CRUD oparation built to perform basic operations like seve to localstorage and database. It's a beginner-level project created to enhance understanding of how AI or logic-based models can be integrated with user interfaces for basic conditions.
- 87890590501987092366f0ff34cac1fe9bf8ffa3
+## 📸 Screenshots
+
+> [https://github.com/redoy-hossen-emon/password-maneger/blob/main/localhost_5173_.png]
+
+## 🧑‍💻 Getting Started
+
+### 1. Clone the repository
+
+```bash
+git clone https://github.com/redoy-hossen-emon/password-maneger
+cd password-manager
